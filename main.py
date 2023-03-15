@@ -4,7 +4,7 @@ import os
 
 # url = 'https://seatgeek.com/api/event_listings_v2?_include_seats=1&aid=225&client_id=MTY2MnwxMzgzMzIwMTU4&event_page_view_id=a3bd1cd9-0a41-408e-943b-a9200ee8620b&id=5758248&sixpack_client_id=df3dceb1-4b10-47fb-8ce4-5a63f1eb2de8'
 #id for clippers game = 5758248
-def get_listings(id):
+def get_listings(id): #function to get listsings (the list of dicts) from the get requests
     url = 'https://seatgeek.com/api/event_listings_v2'
     data = {
         # "_include_seats": "1",
@@ -18,11 +18,11 @@ def get_listings(id):
 
     print(resp.status_code)
 
-    resp_dict = json.loads(resp.text)
-    listings = resp_dict['listings']
+    resp_dict = json.loads(resp.text)   #convert the text to dict
+    listings = resp_dict['listings']    #get only the listings object which is a list of all tickets
     return listings
 
-file_path = os.path.join(os.getcwd(), "scrape.txt")
+file_path = os.path.join(os.getcwd(), "scrape.txt") #get local path to scrape.txt
 
 game_ids = [5758248, 5757782, 5757781]
 
